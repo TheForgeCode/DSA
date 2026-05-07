@@ -1,0 +1,15 @@
+# Compiled binaries
+*.out
+*.exe
+
+# Object files
+*.o
+
+# Build directories
+build/
+
+# VS Code
+.vscode/
+
+# Temporary/Linux files
+*~
