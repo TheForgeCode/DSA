@@ -2,101 +2,97 @@
 using namespace std;
 
 /*
-    Problem: Factorial of a Number
+Problem 1: Valid Palindrome
+LeetCode
 
-    Key Idea:
-    - For N > 20, factorial exceeds the range of long long.
-    - Store the number digit by digit in a vector.
-    - Store digits in reverse order.
+Key Idea:
+- Ignore non-alphanumeric characters.
+- Convert both characters to lowercase.
+- Compare from both ends using two pointers.
 
-    Example:
-    120 -> [0, 2, 1]
+Example:
+"A man, a plan, a canal: Panama"
+-> "amanaplanacanalpanama"
+-> palindrome
 
-    We multiply the current number by (N-1), (N-2), ... , 2
-    while handling carry manually.
+Time Complexity: O(n)
+Space Complexity: O(1)
+
 */
 
+class Solution {
+public:
+bool isPalindrome(string s) {
+int l = 0;
+int r = s.size() - 1;
 
-void helper(int n, vector<int> &product) {
-    if (n == 1) return;
 
-    int carry = 0;
+    while(l < r) {
+        while(l < r && !isalnum(s[l])) l++;
+        while(l < r && !isalnum(s[r])) r--;
 
-    for (int i = 0; i < product.size(); i++) {
-        carry = product[i] * n + carry;
+        if(tolower(s[l]) != tolower(s[r])) return false;
 
-        product[i] = carry % 10;
-        carry /= 10;
+        l++;
+        r--;
     }
 
-    // Store remaining carry digits
-    while (carry != 0) {
-        product.push_back(carry % 10);
-        carry /= 10;
-    }
-
-    helper(n - 1, product);
+    return true;
 }
 
 
-void factorial(int n) {
-    if (n == 1) {
-        cout << 1 << endl;
-        return;
-    }
-
-    vector<int> product;
-
-    // Store digits of n in reverse order
-    int num = n;
-    while (num > 0) {
-        product.push_back(num % 10);
-        num /= 10;
-    }
-
-    helper(n - 1, product);
-
-    // Print answer
-    for (auto it = product.end(); it != product.begin();) {
-        --it;
-        cout << *it;
-    }
-
-    cout << endl;
-}
-
+};
 
 /*
-    Notes:
+Problem 2: Palindrome String using Recursion
+Coding Ninjas
 
-    1. Why not use long long?
-       - 20! fits in long long.
-       - 21! overflows long long.
-       - N can be up to 100.
+Key Idea:
+- Compare first and last character.
+- Move inside recursively.
+- Base case: i >= n/2
 
-    2. Why use a vector?
-       - Factorial can have hundreds of digits.
-       - Vector stores each digit separately.
+Iterative version:
+- Same logic using two pointers and a while loop.
 
-    3. Why store digits in reverse order?
-       - Easier carry handling.
-       - Start multiplication from the least significant digit.
+Time Complexity: O(n)
+Space Complexity: O(n) [Recursive Call Stack]
+*/
 
-    4. Carry handling:
-       Example:
-       9 × 25 = 225
+bool helper(string& str, int i, int n) {
+if(i >= n / 2) return true;
 
-       Store:
-       digit = 225 % 10 = 5
-       carry = 225 / 10 = 22
+if(str[i] != str[n - i - 1]) return false;
 
-       Carry is used in the next digit.
+return helper(str, i + 1, n);
 
-    5. Complexity:
-       Time  : O(N × Digits)
-       Space : O(Digits) + O(N) recursion stack
+}
 
-    6. Important learning:
-       When numbers become too large for built-in data types,
-       store them digit by digit and simulate arithmetic manually.
+bool isPalindrome(string& str) {
+int i = 0;
+int n = str.size();
+
+return helper(str, i, n);
+
+
+}
+
+/*
+Notes:
+
+1. Iterative same idea:
+   - left = 0
+   - right = n - 1
+   - compare str[left] and str[right]
+   - left++
+   - right--
+
+2. Recursive idea:
+   - compare outer characters first
+   - then solve smaller substring
+
+3. Important:
+   - In recursion, always return the recursive call.
+   - Otherwise the function may miss the final answer.
+
 */
