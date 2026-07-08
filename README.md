@@ -1,15 +1,30 @@
 # DSA
 
-A structured repository for my Data Structures and Algorithms practice using C++.
+Data Structures and Algorithms practice in C++.
 
-## Current Progress
-- Basics
-  - Pattern Problems
+## Purpose
 
-## Goals
-- Strengthen problem solving
-- Prepare for placements and internships
-- Build consistency in DSA
+- Learn Data Structures and Algorithms
+- Improve problem-solving skills
+- Prepare for coding interviews and placements
+
+## Progress
+
+| Module | Status |
+|---------|--------|
+| Basics | ✅ Completed |
+| Sorting | 🚧 In Progress |
+
+### Basics
+
+- Pattern Problems
+- Basic Maths
+- Basic Recursion
+- Basic Hashing
+
+### Sorting
+
+- Selection Sort
 
 ## Repository Structure
 
@@ -17,14 +32,20 @@ A structured repository for my Data Structures and Algorithms practice using C++
 DSA/
 ├── README.md
 ├── .gitignore
-└── 01_Basics/
-    └── Pattern_Problems/
+├── 01_Basics/
+│   ├── 01_Pattern_Problems/
+│   ├── 02_Basic_Maths/
+│   ├── 03_Basic_Recursion/
+│   └── 04_Basic_Hashing/
+└── 02_Sorting/
 ```
 
 ## Language
+
 - C++
 
-## Learning Platforms
+## Practice Sources
+
 - Striver A2Z DSA Sheet
 - Coding Ninjas
 - LeetCode
