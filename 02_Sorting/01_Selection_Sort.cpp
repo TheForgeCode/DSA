@@ -39,9 +39,9 @@ void swap(int &first, int &second) {
     second = temp;
 }
 
-void selectionSort(vector<int> &arr) {
+void selection_Sort(vector<int> &arr) {
 
-    for(int i = 0; i < arr.size(); i++) {
+    for(int i = 0; i < arr.size() - 1; i++) {
 
         int minIndex = i;
 
