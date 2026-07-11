@@ -16,22 +16,29 @@ using namespace std;
 // Algorithm
 // ==========================================================
 //
-// Repeat n-1 passes.
+// Repeat passes.
 //
 // In every pass: Compare adjacent elements.
 //
-// If: arr[j] > arr[j+1]
+// If: arr[current] > arr[current + 1]
 // Swap them.
-// 
-// Largest element reaches its correct position.
+//
+// If no swaps occur during a pass, the array is already sorted. Stop early.
 
 
 void bubbleSort(vector<int> &nums) {
-    for(int pass = 0; pass < nums.size(); pass++) {
-        for(int current = 0; current < nums.size() - pass - 1; current++) {
-            if(nums[current] > nums[current + 1]) {
+    for (int pass = 0; pass < nums.size(); pass++) {
+        bool swapped = false;
+
+        for (int current = 0; current < nums.size() - pass - 1; current++) {
+            if (nums[current] > nums[current + 1]) {
                 swap(nums[current], nums[current + 1]);
+                swapped = true;
             }
+        }
+
+        if (!swapped) {
+            break;
         }
     }
 }
@@ -41,7 +48,7 @@ void bubbleSort(vector<int> &nums) {
 // Time Complexity
 // ==========================================================
 //
-// Best Case: O(n²)
+// Best Case: O(n)
 // Average Case: O(n²)
 // Worst Case: O(n²)
 
@@ -66,31 +73,35 @@ void bubbleSort(vector<int> &nums) {
 // Adaptive?
 // ==========================================================
 //
-// No (Current Code)
+// Yes.
 //
-// It always performs all passes.
-// Can be made Adaptive using a swapped flag.
+// If the array becomes sorted before all passes finish,
+// the algorithm stops early using the swapped flag.
 
 
 // ==========================================================
 // Optimization
 // ==========================================================
 //
-// Use a boolean:
-// swapped = false
+// Use a boolean variable:
 //
-// If no swap occurs in an entire pass, array is already sorted.
-// Break immediately.
+// bool swapped = false;
 //
-// Best Case becomes: O(n)
+// Set it to true whenever a swap occurs.
+//
+// If swapped remains false after an entire pass, the array is already sorted.
+// Break out of the loop immediately.
+//
+// Best Case becomes: O(n).
 
 
 // ==========================================================
 // Key Observation
 // ==========================================================
 //
-// After every pass:
-// Largest element reaches its correct position.
+// After every pass: Largest element reaches its correct position.
 //
 // Therefore:
 // Inner loop runs till: n - pass - 1
+//
+// If a complete pass performs no swaps, the remaining array is already sorted.
