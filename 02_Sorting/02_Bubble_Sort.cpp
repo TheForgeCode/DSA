@@ -26,7 +26,7 @@ using namespace std;
 // If no swaps occur during a pass, the array is already sorted. Stop early.
 
 
-void bubbleSort(vector<int> &nums) {
+void bubble_sort(vector<int> &nums) {
     for (int pass = 0; pass < nums.size(); pass++) {
         bool swapped = false;
 

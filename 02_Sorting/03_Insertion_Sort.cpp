@@ -30,7 +30,7 @@ using namespace std;
 // within the sorted part.
 
 
-void insertionSort(vector<int>& nums) {
+void insertion_sort(vector<int>& nums) {
     for (int i = 0; i < nums.size(); i++) {
         int current = i;
 

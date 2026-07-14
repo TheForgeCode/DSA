@@ -39,7 +39,7 @@ void swap(int &first, int &second) {
     second = temp;
 }
 
-void selection_Sort(vector<int> &arr) {
+void selection_sort(vector<int> &arr) {
 
     for(int i = 0; i < arr.size() - 1; i++) {
 
