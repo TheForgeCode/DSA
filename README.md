@@ -25,6 +25,8 @@ Data Structures and Algorithms practice in C++.
 ### Sorting
 
 - Selection Sort
+- Bubble Sort
+- Insertion Sort
 
 ## Repository Structure
 
